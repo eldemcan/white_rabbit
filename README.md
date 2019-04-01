@@ -1,4 +1,4 @@
-# WhiteRabbit
+# WhiteRabbit ![Build Status](https://travis-ci.com/eldemcan/white_rabbit.svg?branch=master)
 Rails engine for managing recurring jobs. You can use this engine in conjunction with Resque,
 SideKiq etc. I utilized this amazing gem called [rufus](https://github.com/jmettraux/rufus-scheduler)
 

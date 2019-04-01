@@ -1,5 +1,8 @@
 # WhiteRabbit
-Rails engine for managing recurring jobs. You can use this engine in conjunction with Resque etc.
+Rails engine for managing recurring jobs. You can use this engine in conjunction with Resque,
+SideKiq etc. I utilized this amazing gem called [rufus](https://github.com/jmettraux/rufus-scheduler)
+
+![overview](intro.gif)
 
 ## Usage
 Define you tasks inside of schedule folder and white_rabbit will pick it up. Your tasks has to include `call` method.
@@ -10,24 +13,13 @@ Define you tasks inside of schedule folder and white_rabbit will pick it up. You
 - `yarn build` will build front end code  if you make any changes
 -  add `mount WhiteRabbit::Engine => '/white_rabbit'` to route
 
-  Follow rails installation guide
+  Basically follow rails installation guide [install guide](https://guides.rubyonrails.org/engines.html)
 
-```ruby
-gem 'white_rabbit'
-```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install white_rabbit
-```
+## Current work
+You can see what I am currently working on [here](https://trello.com/b/iXQ509wC/rabbitwatch).
 
 ## Contributing
-Contribution directions go here.
+Please don't hesitate to open pr and improve this project.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

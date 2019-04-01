@@ -3381,3 +3381,87 @@ Processing by WhiteRabbit::AdminController#destroy_job as HTML
   [1m[36mWhiteRabbit::TaskModel Load (0.2ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."job_id" = ? LIMIT ?[0m  [["job_id", "100"], ["LIMIT", 1]]
 Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.2ms)
   [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+Cleaning existing tasks
+  [1m[36mWhiteRabbit::TaskModel Destroy (5.6ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by WhiteRabbit::AdminController#index as HTML
+  Rendering /Users/celdem/Desktop/playground_white_rabbit/sample_app/white_rabbit/app/views/white_rabbit/admin/index.html.erb within layouts/white_rabbit/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered /Users/celdem/Desktop/playground_white_rabbit/sample_app/white_rabbit/app/views/white_rabbit/admin/index.html.erb within layouts/white_rabbit/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by WhiteRabbit::AdminController#task_types as HTML
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by WhiteRabbit::AdminController#create as HTML
+  Parameters: {"frequency"=>"1", "frequencyType"=>"min", "jobParams"=>"", "jobTypes"=>"MyDummyTask"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.8ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhiteRabbit::MyDummyTask"], ["job_id", "cron_1554133105.2774038_70345932080740"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "white_rabbit_task_models"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.3ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhitRabbit::MyDummyTask"], ["job_id", "1"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WhiteRabbit::AdminController#fetch_jobs as HTML
+  [1m[36mWhiteRabbit::TaskModel Load (0.1ms)[0m  [1m[34mSELECT "white_rabbit_task_models".* FROM "white_rabbit_task_models"[0m
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.5ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhitRabbit::MyDummyTask"], ["job_id", "1"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by WhiteRabbit::AdminController#destroy_job as HTML
+  Parameters: {"jobId"=>"1"}
+  [1m[36mWhiteRabbit::TaskModel Load (0.1ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."job_id" = ? LIMIT ?[0m  [["job_id", "1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 20ms (ActiveRecord: 0.4ms)
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by WhiteRabbit::AdminController#destroy_job as HTML
+  Parameters: {"jobId"=>"100"}
+  [1m[36mWhiteRabbit::TaskModel Load (0.2ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."job_id" = ? LIMIT ?[0m  [["job_id", "100"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.4ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhiteRabbit::MyDummyTask"], ["job_id", "100"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "white_rabbit_task_models"[0m
+  [1m[36mWhiteRabbit::TaskModel Load (0.1ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" ORDER BY "white_rabbit_task_models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.5ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhiteRabbit::MyDummyTask"], ["job_id", "1"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Load (0.1ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" ORDER BY "white_rabbit_task_models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "white_rabbit_task_models"[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWhiteRabbit::TaskModel Load (0.6ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" ORDER BY "white_rabbit_task_models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.6ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhiteRabbit::MyDummyTask"], ["job_id", "1"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Load (0.1ms)[0m  [1m[34mSELECT  "white_rabbit_task_models".* FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."job_id" = ? LIMIT ?[0m  [["job_id", "1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models" WHERE "white_rabbit_task_models"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "white_rabbit_task_models"[0m
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Create (0.4ms)[0m  [1m[32mINSERT INTO "white_rabbit_task_models" ("job_class", "job_id", "interval", "params") VALUES (?, ?, ?, ?)[0m  [["job_class", "WhiteRabbit::MyDummyTask"], ["job_id", "1"], ["interval", "*/1 * * * *"], ["params", ""]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (0.0ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "white_rabbit_task_models"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m

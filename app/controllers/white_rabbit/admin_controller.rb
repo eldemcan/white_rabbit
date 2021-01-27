@@ -1,42 +1,45 @@
-require_dependency "white_rabbit/application_controller"
+require_dependency 'white_rabbit/application_controller'
 
 module WhiteRabbit
   class AdminController < ApplicationController
-    protect_from_forgery with: :null_session
-
     def index
+      @jobs = task_names
+      @scheduled_jobs = TaskModel.all
       render :index
     end
 
-    def task_types
-      render json: task_names || ''
-    end
-
     def create
-      SchedulerService.create_task(create_job_params)
+      task = SchedulerService.create_task(create_job_params)
 
-      head :ok
+      if task
+        redirect_to :index, flash: { notice: 'Task Created' }
+      else
+        redirect_to :index, flash: { error: 'Couldn\'t create issue' }
+      end
     end
 
     def fetch_jobs
-      render json: TaskModelSerializer.new(TaskModel.all).serializable_hash[:data]
+      render json: TaskModel.all.to_json.camelize
     end
 
     def destroy_job
       res = SchedulerService.kill_task(params_for_destroy_job[:job_id])
 
       if res
-        head :ok
+        redirect_to :index
       else
-        head :unprocessable_entity
+        redirect_to :index, flash: { error: "Couldn't kill the task" }
       end
     end
 
     private
 
-    # cache this one
+    # TODO: cache this one
     def task_names
-      root_path = Rails.root.join('white_rabbit', 'app', 'schedule', 'white_rabbit')
+      root_path = Rails.root.join('app', 'schedule', 'white_rabbit')
+
+      return [] unless Pathname.new(root_path).exist?
+
       file_names = Dir.entries(root_path)
       file_names
         .select { |fn| File.extname(fn) == '.rb' }
@@ -53,8 +56,9 @@ module WhiteRabbit
         :frequency,
         :jobParams,
         :jobTypes,
-        :hours,
-        :minutes
+        :time,
+        :authenticity_token,
+        :commit
       ).to_h.to_snake_keys.with_indifferent_access
     end
   end

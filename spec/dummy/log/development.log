@@ -63,3 +63,167 @@ Migrating to WhiteRabbitTasks (20181123105600)
   [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-29 11:01:03.591528"], ["updated_at", "2019-03-29 11:01:03.591528"]]
   [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Cleaning existing tasks
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.5ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.1ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.5ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (0.9ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.0ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.1ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.0ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.0ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+Cleaning existing tasks
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (1.0ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/celdem/.asdf/installs/ruby/2.6.6/bin/rake:23)
+Cleaning existing tasks
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWhiteRabbit::TaskModel Destroy (0.8ms)[0m  [1m[31mDELETE FROM "white_rabbit_task_models"[0m
+DEPRECATION WARNING: Initialization autoloaded the constants WhiteRabbit::ApplicationRecord, WhiteRabbit::TaskModel, and WhiteRabbit::SchedulerService.
+
+Being able to do this is deprecated. Autoloading during initialization is going
+to be an error condition in future versions of Rails.
+
+Reloading does not reboot the application, and therefore code executed during
+initialization does not run again. So, if you reload WhiteRabbit::ApplicationRecord, for example,
+the expected changes won't be reflected in that stale Class object.
+
+`config.autoloader` is set to `classic`. These autoloaded constants would have been unloaded if `config.autoloader` had been set to `:zeitwerk`.
+
+Please, check the "Autoloading and Reloading Constants" guide for solutions.
+ (called from <top (required)> at /Users/celdem/rails_st/white_rabbit/spec/dummy/config/environment.rb:5)
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /Users/celdem/.asdf/installs/ruby/2.7.2/bin/rake:23)

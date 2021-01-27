@@ -7,8 +7,23 @@ module WhiteRabbit
         return unless verify_parameters(params)
 
         cron_exp = convert_params_to_cron(params)
-        task = Object.const_get("WhiteRabbit::#{params[:job_types]}").new(cron_exp, params[:job_params])
-        job_id = schedule_task(task)
+        job_id = nil
+        if Object.const_defined?("WhiteRabbit::#{params[:job_types]}")
+          task = Object.const_get("WhiteRabbit::#{params[:job_types]}").new(cron_exp, params[:job_params])
+          job_id = schedule_task(task)
+        else
+          root_path = Rails.root.join('app', 'schedule', 'white_rabbit')
+          file_names = Dir.entries(root_path)
+          file_names.each do |fn|
+            if File.extname(fn) == '.rb'
+              require fn
+              Rails.logger.info("Reloading #{rb}")
+            end
+          end
+
+          return false unless Object.const_defined?("WhiteRabbit::#{params[:job_types]}")
+        end
+
         WhiteRabbit::TaskModel.save_task(task, job_id)
       end
 
@@ -32,25 +47,30 @@ module WhiteRabbit
 
       def verify_parameters(params)
         ranges = {
-          min: 0..59,
+          minute: 0..59,
           hour: 0..23,
           days: 1..31,
           month: 1..12,
           daysw: 0..6
         }
 
+        time_format = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
+
         frequency_type = ranges[params[:frequency_type].to_sym]
 
-        !frequency_type.nil? &&
-          frequency_type.include?(params[:frequency].to_i) &&
-          ranges[:min].include?(params[:minutes].to_i) &&
-          ranges[:hour].include?(params[:hours].to_i)
+        return false if frequency_type.nil?
+
+        if params.key?(:time)
+          frequency_type.include?(params[:frequency].to_i) && time_format.match?(params[:time])
+        else
+          frequency_type.include?(params[:frequency].to_i)
+        end
       end
 
       def convert_params_to_cron(params)
         type = params[:frequency_type]
         frequency = params[:frequency].to_i
-        exp = if %w[min hour days].include?(type)
+        exp = if %w[minute hour days].include?(type)
                 frequency.to_s + type[0]
               elsif type == 'month'
                 %i[jan feb mar apr may jun jul aug sep oct nov dec][frequency]
@@ -58,9 +78,8 @@ module WhiteRabbit
                 %i[sunday monday tuesday wednesday thursday friday saturday][frequency]
               end
 
-        if params.key?(:hours) && params.key?(:minutes)
-          time_format = "#{params[:hours]}:#{params[:minutes]}"
-          Cronter.convert_to_cron(exp, time: time_format)
+        if params.key?(:time)
+          Cronter.convert_to_cron(exp, time: params[:time])
         else
           Cronter.convert_to_cron(exp)
         end

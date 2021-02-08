@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
 //= require white_rabbit
 
 console.log('Application js in engine');

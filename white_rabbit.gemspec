@@ -8,20 +8,22 @@ Gem::Specification.new do |s|
   s.authors     = ['Can Eldem']
   s.email       = ['eldemcan@gmail.com']
   s.homepage    = 'https://github.com/eldemcan'
-  s.summary     = 'Summary of WhiteRabbit.'
-  s.description = 'Description of WhiteRabbit.'
+  s.summary     = 'Frontend for scheduling and managing reoccurring jobs'
+  s.description = 'Frontend for scheduling and managing reoccurring jobs rails engine based of rufus gem'
   s.license     = 'MIT'
+  s.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'cronter'
-  s.add_dependency 'fast_jsonapi'
-  s.add_dependency 'plissken'
-  s.add_dependency 'rails', '~> 5.2.1'
-  s.add_dependency 'rufus-scheduler'
-  s.add_dependency 'sqlite3'
-  s.add_development_dependency 'factory_bot_rails'
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'single_cov'
-  s.add_development_dependency 'sqlite3'
+  s.add_dependency 'cron2english', '~> 0.1.6'
+  s.add_dependency 'cronter', '~> 0.1.2'
+  s.add_dependency 'plissken', '~> 1.3'
+  s.add_dependency 'rails', '~> 6.0.3.1'
+  s.add_dependency 'rufus-scheduler', '~> 3.6'
+  s.add_dependency 'sqlite3', '~> 1.4'
+
+  s.add_development_dependency 'byebug', '~> 11.1'
+  s.add_development_dependency 'factory_bot_rails', '~> 6.1'
+  s.add_development_dependency 'rspec-rails', '~> 4.0'
+  s.add_development_dependency 'single_cov', '~> 1.3 '
 end

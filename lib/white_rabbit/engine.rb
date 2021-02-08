@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'rufus-scheduler'
 require 'cronter'
+require 'cron2english'
 require 'sqlite3'
 require 'factory_bot_rails' if ENV['RAILS_ENV'] == 'test'
-require 'fast_jsonapi'
 require 'plissken'
 
 module WhiteRabbit
@@ -18,5 +18,8 @@ module WhiteRabbit
 
     config.factory_bot.definition_file_paths << "#{WhiteRabbit::Engine.root}/spec/factories/white_rabbit" if defined?(FactoryBotRails)
 
+    initializer 'blorgh.assets.precompile' do |app|
+      app.config.assets.precompile += %w(white_rabbit.js '**/*.css' )
+    end
   end
 end

@@ -13,18 +13,3 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
-gem 'sqlite3'
-gem 'cronter'
-gem 'rufus-scheduler'
-gem 'cron2english', '~> 0.1.6'
-gem 'fast_jsonapi'
-gem "plissken"
-
-group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-rails'
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
-  gem 'single_cov'
-end

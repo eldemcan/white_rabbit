@@ -5,7 +5,7 @@ require 'rails_helper'
 SingleCov.covered! uncovered: 6, file: 'app/services/white_rabbit/scheduler_service.rb'
 
 describe WhiteRabbit::SchedulerService do
-  let(:params) { { frequency_type: 'min', frequency: 1, job_params: '', job_types: 'MyDummyTask' } }
+  let(:params) { { cron: '*/1 * * * *', job_params: '', job_type: 'MyDummyTask' } }
 
   before do
     allow(WhiteRabbit::SchedulerService).to receive(:schedule_task).and_return(1)
@@ -23,7 +23,7 @@ describe WhiteRabbit::SchedulerService do
   end
 
   it 'does not create task with invalid parameters' do
-    params = { frequency_type: 'min', frequency: 100, job_params: '', job_types: 'MyDummyTask' }
+    params[:cron] = 'invalid'
     WhiteRabbit::SchedulerService.create_task(params)
     created_job = WhiteRabbit::TaskModel.first
 

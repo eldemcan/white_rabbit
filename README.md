@@ -3,7 +3,9 @@
 Rails engine for managing recurring jobs. You can use this engine in conjunction with Resque,
 SideKiq etc. Build on [rufus gem](https://github.com/jmettraux/rufus-scheduler)
 
-![overview](intro.gif)
+![overview](overview.png)
+
+
 
 ## Usage
 Define you tasks inside of app/schedule/white_rabbit folder and white_rabbit will pick it up. Your tasks has to include `call` method.

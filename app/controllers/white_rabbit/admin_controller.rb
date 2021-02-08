@@ -14,21 +14,30 @@ module WhiteRabbit
       if task
         redirect_to :index, flash: { notice: 'Task Created' }
       else
-        redirect_to :index, flash: { error: 'Couldn\'t create issue' }
+        redirect_to :index, flash: { alert: 'Couldn\'t create issue' }
+      end
+    end
+
+    def run_job
+      params.permit(:job_class, :job_params, :authenticity_token, :commit)
+      success = JobService.run_job(params[:job_class], params[:job_params])
+      if success
+        redirect_to :index, flash: { notice: 'Job triggered' }
+      else
+        redirect_to :index, flash: { alert: 'Couldn\'t run job' }
       end
     end
 
     def fetch_jobs
-      render json: TaskModel.all.to_json.camelize
+      render json: TaskModel.all.to_json(except: [:id, :interval], methods: :readable_interval)
     end
 
     def destroy_job
       res = SchedulerService.kill_task(params_for_destroy_job[:job_id])
-
       if res
         redirect_to :index
       else
-        redirect_to :index, flash: { error: "Couldn't kill the task" }
+        redirect_to :index, flash: { alert: "Couldn't kill the task" }
       end
     end
 
@@ -52,11 +61,9 @@ module WhiteRabbit
 
     def create_job_params
       params.permit(
-        :frequencyType,
-        :frequency,
+        :cron,
         :jobParams,
-        :jobTypes,
-        :time,
+        :jobType,
         :authenticity_token,
         :commit
       ).to_h.to_snake_keys.with_indifferent_access

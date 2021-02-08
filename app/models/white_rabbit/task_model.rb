@@ -13,5 +13,11 @@ module WhiteRabbit
         params: task.params
       )
     end
+
+    def readable_interval
+      Cron2English.parse(interval).join(' ')
+    rescue Cron2English::ParseException
+      interval
+    end
   end
 end

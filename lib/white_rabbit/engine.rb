@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rufus-scheduler'
 require 'cronter'
+require 'cron2english'
 require 'sqlite3'
 require 'factory_bot_rails' if ENV['RAILS_ENV'] == 'test'
 require 'plissken'

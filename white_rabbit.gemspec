@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.authors     = ['Can Eldem']
   s.email       = ['eldemcan@gmail.com']
   s.homepage    = 'https://github.com/eldemcan'
-  s.summary     = 'Summary of WhiteRabbit.'
-  s.description = 'Description of WhiteRabbit.'
+  s.summary     = 'Frontend for scheduling and managing reoccurring jobs'
+  s.description = 'Frontend for scheduling and managing reoccurring jobs rails engine based of rufus gem'
   s.license     = 'MIT'
-  s.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  s.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 

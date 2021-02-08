@@ -16,7 +16,7 @@
   <div class="form-group row">
     <label class="col-4 col-form-label" for="select">Jobs</label>
     <div class="col-8">
-      <%= select_tag "jobTypes",  options_for_select(@jobs), class: "custom-select", "data-target": "admin.job"  %>
+      <%= select_tag "jobType",  options_for_select(@jobs), class: "custom-select", "data-target": "admin.job"  %>
     </div>
   </div>
   <div class="form-group row">
@@ -25,27 +25,26 @@
       <input id="text" name="jobParams" type="text" class="form-control" data-target="admin.jobParams">
     </div>
   </div>
+
   <div class="form-group row">
-    <label for="text" class="col-4 col-form-label">Every</label>
-    <div class="col-4">
-      <%= select_tag "frequency",  options_for_select((1..59).to_a), name: "frequency", class: "custom-select", "data-target": "admin.frequency"   %>
-    </div>
-    <div class="col-4">
-      <%= select_tag "frequencyType",  options_for_select(['minute', 'hour', 'days', 'month', 'daysw'], 'minute'), name: "frequencyType", class: "custom-select", "data-action": "admin#changeFrequency", "data-target": "admin.frequencyType"   %>
+    <label for="text" class="col-4 col-form-label">Cron Expression</label>
+    <div class="col-8">
+      <input id="cron" name="cron" type="text" class="form-control" data-action="input->admin#checkCron" data-target="admin.cronExpression">
     </div>
   </div>
+
   <div class="form-group row">
-  <div class="col-4">
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" data-action="admin#blockTime" name='atCheckBox' data-target="admin.atCheckBox">
-    <label class="form-check-label">At</label> </div>
+    <label for="text" class="col-4 col-form-label">Quick Schedule</label>
+    <div class="col-8">
+      <button type="button" data-exp = "*/1 * * * *" class="btn btn-info" data-action="admin#quickSchedule">Every Minute</button>
+      <button type="button" data-exp = "0 8 * * *" class="btn btn-info">Daily 8 AM</button>
+      <button type="button" data-exp = "0 0 1 * *" class="btn btn-info">First day of month</button>
+    </div>
   </div>
-    <input type="time" min="00:00" max="23:59" class="form-control py-2 col-2" data-target="admin.time" name="time" disabled>
-    <div class="col-6"> </div>
-  </div>
+
   <div class="form-group row">
     <div class="offset-4 col-8">
-       <%= f.submit 'Create Job', class: 'btn btn-primary'  %>
+       <%= f.submit 'Create Job', id: 'submitButton', class: 'btn btn-primary', "data-target": 'admin.submitButton' %>
     </div>
   </div>
 <% end %>
@@ -63,7 +62,7 @@
        <tr>
        <td> <%= index + 1 %></td>
        <td> <%= scheduled_job.job_class %> </td>
-       <td> <%= scheduled_job.interval %>  </td>
+       <td> <%= scheduled_job.readable_interval %>  </td>
        <td> <%= scheduled_job.params %> </td>
       <td>
        <%= form_with url: destroy_job_path,   method: :post  do |f| %>
@@ -71,8 +70,15 @@
            <%= f.submit 'Delete', class: 'btn btn-danger'  %>
        <% end %>
        </td>
+       <td>
+         <%= form_with url: run_job_path,   method: :post  do |f| %>
+            <%= f.hidden_field :job_class, :value => scheduled_job.job_class %>
+            <%= f.hidden_field :job_params, :value => scheduled_job.params %>
+            <%= f.submit 'Run Now', class: 'btn btn-primary'  %>
+         <% end %>
+       </td>
        </tr>
-     <% end  %>
+     <% end %>
   </tbody>
 </table>
 <%= stylesheet_link_tag  '/assets/white_rabbit', media: 'all', 'data-turbolinks-track': 'reload'  %>

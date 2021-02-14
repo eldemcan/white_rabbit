@@ -46,6 +46,9 @@ module WhiteRabbit
 
       def verify_cron(params)
         cron_exp = params[:cron].chomp
+
+        return false if cron_exp.blank?
+
         begin
           Rufus::Scheduler.parse(cron_exp)
         rescue ArgumentError

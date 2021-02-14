@@ -2,6 +2,8 @@ require_dependency 'white_rabbit/application_controller'
 
 module WhiteRabbit
   class AdminController < ApplicationController
+    layout 'application' # use host applications layout
+
     def index
       @jobs = task_names
       @scheduled_jobs = TaskModel.all
@@ -14,7 +16,7 @@ module WhiteRabbit
       if task
         redirect_to :index, flash: { notice: 'Task Created' }
       else
-        redirect_to :index, flash: { alert: 'Couldn\'t create issue' }
+        redirect_to :index, flash: { alert: 'Couldn\'t create task' }
       end
     end
 

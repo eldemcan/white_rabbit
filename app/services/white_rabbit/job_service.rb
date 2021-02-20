@@ -4,7 +4,6 @@ module WhiteRabbit
   class JobService
     class << self
       def run_job(job_name, job_params)
-        # require 'byebug' ; byebug
         # extract requiring logic to common module and added here service
         return false unless Object.const_defined?(job_name)
 

@@ -1,4 +1,4 @@
-class WhiteRabbitTasks < ActiveRecord::Migration[5.2]
+class WhiteRabbitTasks < ActiveRecord::Migration[6.0]
   def change
     create_table :white_rabbit_task_models do |t|
       t.string :job_class
